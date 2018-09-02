@@ -1,0 +1,10 @@
+.search-errors.alert.alert-danger.rounded-0
+  button.close type='button' &times;
+
+= form_for @new_search, url: search_path, html: { class: 'form-inline' }, remote: true do |f|
+  .form-group.pl-0.col-sm-10
+    = f.label :url, class: 'sr-only'
+    = f.text_field :url, placeholder: t('.search_placeholder'), class: 'form-control w-100'
+  = f.submit t('.new_search_button'), class: 'btn btn-large btn-primary ml-3 my-3'
+
+= render 'search_results'

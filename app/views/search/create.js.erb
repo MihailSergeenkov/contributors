@@ -1,0 +1,13 @@
+$('.search-errors p').remove();
+<% if @search.errors.present? %>  
+  $('.search-errors').show();
+  <% @search.errors.full_messages.each do |message| %>
+    $('.search-errors').append('<p class="mb-0">' + '<%= j message %>' + '</p>');
+  <% end %>
+  <% @search.errors.keys.each do |key| %>
+    $("#search_" + "<%= key.to_s %>").addClass('is-invalid');
+  <% end %>
+<% else %>
+  $('#search_repository').val('');
+  $('.search-results').replaceWith("<%= j render 'search_results' %>");
+<% end %>

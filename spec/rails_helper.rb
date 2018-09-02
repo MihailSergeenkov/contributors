@@ -5,6 +5,8 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rspec'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -60,7 +62,24 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  WebMock.disable_net_connect!(allow_localhost: true)
+  
+  config.before(:each) do
+    stub_request(:get, 'https://api.github.com/repos/rails/rails/contributors').to_return(body: [
+      { login: 'user1' },
+      { login: 'user2' },
+      { login: 'user3' }
+    ])
+    stub_request(:get, 'https://api.github.com/repos/airbnb/javascript/contributors').to_return(body: [
+      { login: 'user4' },
+      { login: 'user5' },
+      { login: 'user6' }
+    ])
+  end
 end
+
+Capybara.current_driver = :selenium_chrome_headless
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

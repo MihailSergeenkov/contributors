@@ -1,0 +1,5 @@
+ru:
+  flash:
+    search:
+      create:
+        alert: 'Невозможно выполнить запрос!'

@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Contributors
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -27,7 +30,7 @@ module Contributors
         controller_specs: true,
         request_specs: false
 
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
   end
 end

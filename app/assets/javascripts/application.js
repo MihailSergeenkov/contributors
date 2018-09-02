@@ -13,4 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery3
+//= require bootstrap
 //= require_tree .
+
+$(document).on('click', '.close', function() {
+  $(this).parent().hide();
+});

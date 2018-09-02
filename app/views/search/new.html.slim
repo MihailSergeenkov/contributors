@@ -1,0 +1,7 @@
+.text-center
+  = form_for @new_search, url: search_path, html: { class: 'new-search-center' } do |f|
+    .form-group
+      = f.label :url, class: 'sr-only'
+      = f.text_field :url, placeholder: t('.search_placeholder'), class: 'form-control-lg form-control'
+    .form-group
+      = f.submit t('.new_search_button'), class: 'btn btn-large btn-primary'

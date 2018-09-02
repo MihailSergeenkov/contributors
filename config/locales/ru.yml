@@ -1,0 +1,17 @@
+ru:
+  search:
+    validate_format: 'должен начинаться с "https://github.com"'
+    new:
+      new_search_button: 'Искать'
+      search_placeholder: 'Введите адрес GitHub'
+    show:
+      new_search_button: 'Искать'
+      search_placeholder: 'Введите адрес GitHub'
+    search_results:
+      results: 'Результаты'
+      url: "Адрес: %{url}"
+      download_zip: 'Загрузить ZIP (3)'
+  contributors:
+    pdf_text: 'Награда присуждается'
+    contributor:
+      download_pdf: 'Загрузить PDF'

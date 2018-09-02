@@ -1,0 +1,11 @@
+- if @search.present?
+  .search-results
+    h2 = t('.results')
+    h4 = t('.url', url: @search.url)
+
+    table.table.mt-4
+      tbody
+        = render @search.contributors
+        tr
+          td colspan='2'
+            =link_to t('.download_zip'), search_contributors_path(format: :zip)
